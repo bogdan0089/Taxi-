@@ -1,5 +1,11 @@
 # Taxi API
 
+![CI](https://github.com/bogdan0089/Taxi-/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.13-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 Async ride-hailing REST API built with FastAPI, PostgreSQL, Redis, Stripe, and Celery.
 
 ## Stack
