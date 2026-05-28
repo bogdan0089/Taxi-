@@ -60,29 +60,7 @@ cd Taxi-
 cp .env.example .env
 ```
 
-Fill in `.env`:
-
-```env
-DB_USER=postgres
-DB_PASSWORD=secret
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=uber_db
-
-SECRET_KEY=your-secret-key
-REDIS_URL=redis://localhost:6379
-
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your@email.com
-SMTP_PASSWORD=your-app-password
-
-STRIPE_SECRET_KEY=sk_test_...
-STRIPE_PUBLISHABLE_KEY=pk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-
-ALLOWED_ORIGINS=http://localhost:3000
-```
+Fill in all values — see `.env.example` for the full list of required variables.
 
 ### 2. Start services with Docker
 
@@ -128,6 +106,7 @@ pytest tests/ -v
 
 ## API Endpoints
 
+### Auth
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
 | POST | `/auth/register` | Register new user | — |
@@ -135,19 +114,43 @@ pytest tests/ -v
 | POST | `/auth/logout` | Logout | ✅ |
 | POST | `/auth/refresh/{token}` | Refresh access token | — |
 | GET | `/auth/verify/{token}` | Verify email | — |
+
+### Users
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
 | GET | `/users/{id}` | Get user profile | ✅ |
 | PATCH | `/users/me` | Update profile | ✅ |
 | DELETE | `/users/me` | Deactivate account | ✅ |
+
+### Trips
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
 | POST | `/trips/` | Create trip | Passenger |
 | GET | `/trips/available` | Get available trips | Driver |
 | GET | `/trips/my` | Get my trips | ✅ |
 | POST | `/trips/{id}/accept` | Accept trip | Driver |
 | POST | `/trips/{id}/complete` | Complete trip | Driver |
 | POST | `/trips/{id}/cancel` | Cancel trip | ✅ |
+
+### Payment
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
 | POST | `/payment/method` | Save payment method | ✅ |
+
+### Ratings
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
 | POST | `/ratings/` | Rate driver | Passenger |
 | GET | `/ratings/driver/{id}/avg` | Get driver avg rating | ✅ |
+
+### Admin
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
 | GET | `/admin/users` | List all users | Admin |
 | GET | `/admin/trips` | List all trips | Admin |
 | GET | `/admin/active/verified` | Active verified users | Admin |
+
+### Health
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
 | GET | `/health` | Health check | — |
