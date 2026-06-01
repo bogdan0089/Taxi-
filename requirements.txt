@@ -99,7 +99,6 @@ pluggy==1.6.0
 prompt_toolkit==3.0.52
 propcache==0.4.1
 protobuf==6.33.6
-psycopg2==2.9.11
 psycopg2-binary==2.9.11
 pyasn1==0.6.3
 pybase64==1.4.3
